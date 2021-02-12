@@ -1,0 +1,105 @@
+{% extends 'templates/base.html' %} {% load static %} {% block nav_compte %}menu-active{% endblock nav_compte %} {% block page %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>{% if user.is_authenticated %}Compte {% else %}Inscription {% endif %}</h2>
+                <ol>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>{% if user.is_authenticated %}Compte {% else %}Inscription {% endif %}</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+        <div class="container">
+            <p>
+                {% if user.is_authenticated %}Bienvenu {{ user.username }}, voila les infos pour votre compte aurora {% else %}veiller vous inscrire ou juste vous connecter si vous avez déjà un compte {% endif %}
+            </p>
+        </div>
+    </section>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+        <div class="container">
+            <div class="row wow fadeInUp">
+
+                <div class="col-lg-4 col-md-4">
+                    <div class="contact-about">
+                        <h3>Aurora</h3>
+                        <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="info">
+                        <div>
+                            <i class="ion-ios-location-outline"></i>
+                            <p>A108 Adam Limete<br>Kinshasa, R.D.Congo</p>
+                        </div>
+
+                        <div>
+                            <i class="ion-ios-email-outline"></i>
+                            <p>info@example.com</p>
+                        </div>
+
+                        <div>
+                            <i class="ion-ios-telephone-outline"></i>
+                            <p>+1 5589 55488 55s</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-8">
+                    <div class="form">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="Prenom" id="subject" placeholder="Prenom" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="Nom" id="subject" placeholder="Nom" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                <div class="validate"></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Contact Section -->
+</main>
+<!-- End #main -->
+{% endblock page %} {% block script %}
+<script>
+    $('#header').addClass('header-fixed');
+    $(window).scroll(function() {
+        if ($(this).scrollTop() < 100) {
+            $('#header').addClass('header-fixed');
+        }
+    });
+    $('nav li a').click(function() {
+        window.location.replace(url = 'http://' + window.location.host + $(this).attr('href'))
+    })
+</script>
+{% endblock script %}
