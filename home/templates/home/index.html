@@ -1,11 +1,11 @@
 {% extends 'templates/base.html' %} {% load static %} {% block page %}
 <!-- ======= Intro Section ======= -->
-<section id="intro">
+<section id="intro" style="background: linear-gradient(45deg, rgba(16, 80, 149, 0.836), rgba(205, 99, 29, 0.712)), url('{{MEDIA_URL}}{{intro_image.image.url}}') 100% 100% no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;">
 
     <div class="intro-text">
-        <span style="color: #fff; font-size:35px;">{{ intro_texte.titre }}!</span>
-        <p>{{ intro_texte.sous_titre }}</p>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <span style="color: #fff; font-size:35px;">{{ intro.titre }}!</span>
+        <p>{{intro_texte.titre }}. Ce site est encore en developpement par "<a href="https://merdi-akelax.github.io/">Merdi Akelax</a>"</p>
+        <a href="#pricing" class="btn-get-started scrollto">S'inscrire</a>
     </div>
 
     <div class="product-screens">
@@ -31,23 +31,23 @@
     <section id="about" class="section-bg">
         <div class="container-fluid">
             <div class="section-header">
-                <h3 class="section-title">Apropos de nous</h3>
+                <h3 class="section-title">{{quid.titre}}</h3>
                 <span class="section-divider"></span>
                 <p class="section-description">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br> sunt in culpa qui officia deserunt mollit anim id est laborum
+                    {{quid.description}}
                 </p>
             </div>
 
             <div class="row">
                 <div class="col-lg-6 about-img wow fadeInLeft">
-                    <img src="{% static 'img/about-img.jpg' %}" alt="">
+                    <img src="{{ MEDIA_URL }}{{quid_image.image.url}}" alt="">
                 </div>
 
                 <div class="col-lg-6 content wow fadeInRight">
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elite storium paralate</h2>
-                    <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+                    <h2>{{ quid_texte.titre}}</h2>
+                    <h3>{{quid_texte.para}}</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        {{quid_texte.para}}
                     </p>
 
                     <ul>
@@ -57,9 +57,7 @@
                     </ul>
 
                     <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                        id est laborum Libero justo laoreet sit amet cursus sit amet dictum sit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec
-                    </p>
+                        sequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat
                 </div>
             </div>
 
@@ -75,7 +73,7 @@
 
                 <div class="col-lg-8 offset-lg-4">
                     <div class="section-header wow fadeIn" data-wow-duration="1s">
-                        <h3 class="section-title">Nos points forts</h3>
+                        <h3 class="section-title">{{pf.titre}}</h3>
                         <span class="section-divider"></span>
                     </div>
                 </div>
@@ -87,7 +85,7 @@
                 <div class="col-lg-8 col-md-7 ">
 
                     <div class="row">
-
+                        {% for p in pf_texte %}
                         <div class="col-lg-6 col-md-6 box wow fadeInRight">
                             <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                             <h4 class="title"><a href="">Lorem Ipsum</a></h4>
@@ -108,6 +106,7 @@
                             <h4 class="title"><a href="">Magni Dolores</a></h4>
                             <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum dinoun trade capsule.</p>
                         </div>
+                        {% endfor %}
                     </div>
 
                 </div>

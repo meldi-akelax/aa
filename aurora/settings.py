@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'compte',
     'home',
     'service',
-    'texte',
+    'store'
 ]
 
 MIDDLEWARE = [
