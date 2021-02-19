@@ -23,5 +23,5 @@ def index(request):
         pf_texte = pf.texte_set.all()
         pf_image = pf.image_set.all()[0]
     except :
-        quid = '#'
+        pf = '#'
     return render(request, 'home/index.html', locals())
